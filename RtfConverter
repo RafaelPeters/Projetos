@@ -1,0 +1,85 @@
+
+namespace ConverterScript
+{
+    class cadaLinha {
+        string anterior;
+         string texto;
+        string posterior;
+
+        public cadaLinha(string anterior, string texto, string posterior) {
+            this.anterior = anterior;
+            this.texto = texto;
+            this.posterior = posterior;
+        }
+        public string Ler() {
+
+            return formatador() + System.Environment.NewLine +texto +System.Environment.NewLine ;
+        }
+
+        string formatador() {
+            //se o posterior for maior ou igual a 60 ,adicionar hora
+            string holder="";
+            string before="";
+            foreach (char i in texto) {
+                
+                if (i == ' ')
+                {
+                    before = holder;
+                    holder = "";
+                }
+                
+                else {
+                    holder += "" + i.ToString();
+                    if (holder == "choram" || holder == "chorar" || holder == "choram" && before == "anjo" || before == "anjos")
+                    {   
+                        texto =texto.Replace("choram", "clamam");
+                    }
+                }
+               
+
+            }
+                return "00:"+anterior.Replace('h',':')+",000 --> "+"00:"+posterior.Replace('h',':')+",000";
+        }
+    }
+
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            string address = Console.ReadLine();
+            string[] texto = System.IO.File.ReadAllLines(@"C:\Users\Braga\Downloads\Theology\" + address+".txt");
+            List<cadaLinha> nl = new List<cadaLinha>();
+
+            for(int i = 0;i<texto.Length-2;i++){
+                
+                    cadaLinha um = new cadaLinha(texto[i],texto[i+1],texto[i+2]);
+                    nl.Add(um);
+                i++;
+            }
+            
+          
+            List<string> final = Formatando(nl);
+           
+            using (System.IO.TextWriter tw = new System.IO.StreamWriter(@"D:\Video\"+address+".srt ")) {
+                for (int i = 0; i < final.Count; i++)
+                {
+                    tw.WriteLine(final[i]);
+                }
+            }
+                
+            
+            
+        }
+
+        public static List<string> Formatando(List<cadaLinha> cdl) {
+            List<string> final =new List<string>();
+            int inicio = 1;
+            foreach (cadaLinha i in cdl) {
+
+                final.Add( inicio.ToString() + System.Environment.NewLine + i.Ler()+System.Environment.NewLine);
+                inicio++;
+            }
+            return final; 
+        }
+    }
+}
