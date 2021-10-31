@@ -1,0 +1,113 @@
+ Pacotes snaps são autocontidos (não necessitam instalação no computador para serem executados). 
+Isto significa que funcionam em diferentes distribuições Linux sem exigir adaptações (diferente do tradicional 
+tratamento de dependência dado, por exemplo, em deb ou rpm).
+
+No atom ,settings gpp-compiler
+depois language -nasmx86
+
+.asm é a extensão para assembly
+section .data
+message: db"hello,world",10
+
+
+section .text <means that you are in the code section>
+global _start <means that this function are global ,witch can be used by other files >
+
+
+Evolution of Intel Processors:
+	
+
+Number System:
+hexadecimal 
+e.g 0xa5e9
+0x means that it is a hexadecimal ,base 16
+one hexadecimal digit equals four binary digits 
+
+And gate
+=D- x.y
+	x y|x*y
+	0 0  0
+	0 1  0
+        1 0  0
+        1 1  1
+
+Or gate
+=D--x+y                (o desenho é parecido com o end,mas a tem uma ponta no "D")
+	x y|x+y
+	0 0  0
+	0 1  1
+        1 0  1
+        1 1  1
+
+x->o-x Not gate
+	x |x
+	0  1
+	1  0
+
+Exclusive or gate
+=>D-x(+)y
+	x y|x(+)y
+	0 0  0
+	0 1  1
+        1 0  1
+        1 1  0
+
+From Transistors to Operating Systems 
+Virtual Machine : Software program wich emulates the functions of some other physical or virtual computer 
+
+Virtual machine can be constructed via hardware or software 
+n ISA specifies the behavior of machine code running on implementations of that ISA in a fashion that does not depend on 
+the characteristics of that implementation, providing binary compatibility between implementations. This enables multiple 
+implementations of an ISA that differ in performance, physical size, and monetary cost (among other things), but that are capable
+ of running the same machine code, so that a lower-performance, lower-cost machine can be replaced with a higher-cost, 
+higher-performance machine without having to replace software. It also enables the evolution of the microarchitectures of the
+ implementations of that ISA, so that a newer, higher-performance implementation of an ISA can run software that runs on previous
+ generations of implementations.
+
+	Application/OS
+	Programming Language C/C++/Java
+	Instruction Set Archtecture->assembly language ,conjunto de instruções suportado pelo  microarchitecture 
+	Microarchitecture -> conjunto de gates
+	gates ->conjunto logico de transistors
+	transistors 
+
+Number Systems :
+	Base2 system :
+		binary contendo 1 e 0
+
+	Base16 system
+		hexadecimal ,contem de 0 a 9 e de A a F
+
+cada numero heaxadecimal é formado por 4 binários 
+
+para converter a base para base 10 , mantenha a base e a eleve a sua posicao ,depois multiplique pelo valor de entrada ex :
+
+binario:
+	0110
+	0*2^3+1*2^2+1*2^1+0*2^0 = 6
+hexadecimal 
+	
+
+
+DataTypes:
+	Byte = 8
+	word = 16
+	doubleword=32
+	quadword=64
+
+
+System    |			Range |		Power of 2 |	Byte
+Byte	    0 to 255                            0to(2^8-1)       1
+word	    0 to 65,535				0to(2^16-1)      2
+doubleword  0 to 4.294.967.295                  0to(2^32-1)      4
+quadword   0 to 18.446.744.079.709.551.615      0to(2^64-1)      8
+
+
+
+
+
+
+
+
+
+ 

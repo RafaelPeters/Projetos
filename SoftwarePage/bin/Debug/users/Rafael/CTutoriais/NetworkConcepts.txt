@@ -1,0 +1,24 @@
+Application Layer
+Presentation layer
+Session layer
+Transport layer
+Network layer
+Datalink layer
+Physical layer
+
+The open System Interconnection model is a conceptual model that characterizes and standarizes the communication functions of
+a relecommunication or computing system without regard to its undelaying internal structure and technology 
+Isso quer dizer que cada camada pode ser desenvolvida da forma que o developer quiser ,porém respeitando a estutura conceitual 
+
+
+One most common example of OSI model implementation is TCP/IP network stack runs inside your OS
+O modelo deve ser respeitado as camadas ,uma não sobrepondo a outra ,cada camada é uma abstração 
+
+
+Pratical OSI model ,tcp/ip stack ,que é a implementação do modelo teórico OSI
+onde contem as camadas :
+application 
+transport
+network
+data link 
+physical

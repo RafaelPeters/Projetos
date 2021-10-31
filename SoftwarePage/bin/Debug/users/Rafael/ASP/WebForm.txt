@@ -1,0 +1,526 @@
+Intenet is a network of networks 
+Server<-internet<-httpRequest<-Client
+Server->htmldocument response->internet->Client
+ 
+http server waits fot the request to com on Socket(Port=80)
+Web brownser submits a request for a given url after creating a socket in local process
+request is submitted to dns server so that based on domain name ip address is feched 
+Browser now submits the request to http server 
+Server accepts the request and shifts the client to another socket that the socket on port 80 is released for receiving
+request from other clients
+
+Web server:
+Internet Information Services is an extensible web server software created by Microsoft for use with the Windows NT family.
+ IIS supports HTTP, HTTP/2, HTTPS, FTP, FTPS, SMTP and NNTP.
+Sockets = Ip+Port No(80) default port 80
+
+se o url estiver como :
+http://www.microsoft.com/training/default.html
+de forma default é atribuido o valor :
+http://www.microsoft.com:80/training/default.html
+
+DNS : Mapping domain name to a ip address 
+Quando um cliente estabelece a conexão a partir da porta 80 ,é de responsabilidade do servidor ,criar outra socket onde 
+estará estabelecida a comunicação com o cliente ,assim evitando a porta 80 ficar ocupada para mais requisições.
+
+Servidor espera por um request na porta 80->Navegador envia um request ao url após ter criado um socket local(porta+ip)->requisição
+é feita e submetida a um endereço DNS ->Navegador envia uma solicitação HTTP ao server portador da DNS->
+Servidor recebe a solicitação na porta 80->Transfere a outra porta evitando lock na porta 80->Requisição http é feita 
+e os arquivos são coletados ->arquivos são enviados ao cliente em protocolo a ser renderizado pelo navegador ,conexão 
+é terminada(é terminado a conexão ). Toda vez que uma requisição é feita o ciclo se repete 
+
+HTTP Structure:
+
+Http request structure(Browser->Server)
+Request Line
+Request Header
+Message Body (Posted Data)
+Ex:
+	GET Demo/default.htm Http/1.0  <Request it is made by MethodPathControl/Version> 
+	Header1:bla		<Request Header : Value pairs submitted by the browser to the server.
+				 contains the information about the browser and the os on the client machine>
+	Header2:Blub
+	{empetyLine}
+				<Message body: Stream of name value pairs submitted to the server when the form is 
+				submitted using the method Post>
+
+Http Response structure(Server->Browser)
+Status Line
+Response Header 
+Message Body(Page Content)
+
+Ex:
+	Http/1.1 200 OK <response protocol>
+	date:data com horário e fuso horário utilizado
+	Server:Apache/1.3.3.7(Unix)(Red-hat/linux) <modelo servidor>
+	Last-Modified : data com horario e fuso utilizado
+	Etag:"3f80f-1b6-3e1cb03b"
+	Accept-Tanges: none
+	Content-Length:438
+	Connection :close
+	Content-Type : text/html;charset=UTF-8
+	<Empety Line>
+	<Page content>
+
+If method is post ,then the url :
+ex:
+	someghing.com/default.html?n1=v2&n2=v3 <this is a query string>
+
+Seerver response Structure
+
+Status code:		Status description:
+1xx			Informational
+2xx			Success
+3xx			Redirect
+4xx			File not Found/Not authorized/ Not Authenticated
+5xx			Server error
+
+
+About Web Server:
+	Every server has a default directory and by default on IIS it is: c:\Inetpub\wwwroot\. Only content 
+placed in this filder and its sub folder is acccessible to clients on Internet 
+
+When a brownser request an Asp File,IIS passes the request  to the asp engige(ASP.DLL)on server
+
+	brownser request file from server		web server
+computer--------------------------------------------> server searches for and retrives file from hard drive,there is AS code then it is processed
+	<-------------------------------------------- server returns file to your computer The as code has been converted into html.
+ASP Objects:
+	Request
+	Response
+	Session
+	Application
+	Server
+	ObjectContext
+	AspError
+
+para ativar o servidor IIS 
+ctrl+window ->appwiz.cpl->Turn Windows features on or off ->Internet Information Services ->World wide web services ->Application Development ->Asp
+To run the Asp file ,the file needs to ebe in the directory or child directories of c:\InetPub\WWWRoot\  <as default root>
+In case of dns not reachable: ControlPanel ->Administrative Tools ->Internet Information Services (IIS) Manager 
+Sites ->Default Web Site ->Manage website -Start
+
+code on IIS only works inside <% %/>
+to run the aplication using the server ,you needo to change the path on the brownser url
+ 
+from : c:\InetPub\WWWRoot\folderthatyouNamed to  http://localhost/folderthatyouNamed
+
+if you do a for loop or something ,use vb
+
+Aula 9 ,como form tag key and value é utilizada no asp pages 
+<form action ="URL" method ="Post">
+action atribute: suposed to be the url 
+
+Importante:
+	form tag cannot be nested inside another form tag
+	input type button and reset and disable elements name and value pair is not submitted to the server 
+	input type="button" is used only for writing client side javaScript code;
+	input type = "checkbox" submits name and value pair only if the checkbox is checked otherwise nothing is submitted ,default value is on
+	To group radio buttons,same name must be givem to them .And only the name-value pair on the radio button selected will be submitted to server
+	for select ,name of select and value of the option selected is submitted to server 
+	select tag with size att is rendered as listbox otherwise is rendered as DropDownList
+	If multiple options are selected in litbox,then with same name differente values are submited
+	text area :name of text and value is submited
+	input type "image" behaves as submit button wherre as <img> tag renders static image
+	Form can have more than one submit button , but only the name-value pair of submit button used to post the form is included with the request
+	if the form has input type = "file" to upload a file along with request then its enctype= "multipart/form-data" and method ="post" 
+
+To submit a form to another page ,the type of input needs to be "submit"
+
+O que é o Asp:
+ASP.Net is a framework used for development and executioon of web based applications using MS.NET framework
+
+Every webform has an extension ".aspx"
+webform doesnt have action attribute and it always submits to itself.Even if the action attributed is provided to the server side form it is ignored by
+the asp.net framework
+default method rendered by webform is post
+asp.net controls uses the same programming model wich we use for windows based application
+
+Ui (aspx) is separated from the Business code/EventHandlers(aspx.cs)
+
+O que conecta a ui do code é o evento entre<%%> no inicio do arquivo aspx 
+ex:
+	<%Page Language="C#" AutoEventWireup="true CodeFile="pathofthecode.aspx.cs" Inherits = "_Default"%>
+
+Ao criar um novo arquivo ASP.NEt é apresentado Web location 
+File System: escolhe um diretorio para realizar a aplicação (bom para development)
+HTTP : usa IIS salvo no diretorio do servidor (deploy)
+
+Asp is interpreteded and asp.net is compiled on server 
+
+Event Handling of Controls:
+on the tag use the term AutopostBack <fica nas propriedades do radio ou de outros objetos que podem ser clicados> .
+if autopostback = true ,then it will sent the information to the server and reload page with that post 
+on behind scenes when we use autopose ,ASp.net will add a javascript code with onclick =setTimeout(__dopPostBack("parameter",zerosecconds))
+
+
+Ao criar um projeto vazio ,clique na pasta de aplicação ,que fica abaixo da pasta solucção e add new webform 
+
+Object sender :
+is the reference of the control that raised the event. Isso quer dizer que o sender é o objeto que chamou o evento
+logo ,possui todas informações do objeto
+para pegar o tipo do objeto por exemplo ,caso queira o valor para RadioButton.Ex:
+RadioButton rbn = (RadioButton)Sender; (vai dar cast no sender ,mostrando todos parametros radiobutton que foram passados no evento)
+
+
+EventArgs e :
+	Quando é um eventargs de objeto ,ex: DayRenderEventArgs 
+	você consegue ter o atributo do objeto que está sendo utilizado ,não como objeto externo ,mas o proprio objeto
+
+para design complexo sempre utilizar tables
+
+PostBack pode acarretar de sempre que fizer uma solicitação o código ser refeito (nocaso do método Page_load)
+para evitar a constante atualização 
+*adicionar na parte do codigo onde não é interessante a constante atualização* 
+if(!this.IsPostBack){
+
+}
+
+In web development, a postback is an HTTP POST to the same page that the form is on. In other words, the contents of the form are POSTed back to 
+the same URL as the form. Postbacks are commonly seen in edit forms, where the user introduces information in a form and hits "save" or "submit",
+ causing a postback.
+
+
+<asp:Panel ID="panel" runat="server" DefaultButton = "button1">
+	<if you add a texbox ,it will respond to a button1>
+	<if you have button1 and textbox ,as enterpressed it will focus on 
+button1 and press it>
+</asp:Panel>
+
+Casting exemplo com sender aula 13 43:10 minutos
+
+if (sender is ListBox){
+ListBox lb = (ListBox)sender;
+Response.Write(Lb.SelectedValue)
+}
+*Como o sender passa o objeto que enviou o evento ,dessa forma temos como fazer 
+um método unico que passa varios valores checando o tipo .
+
+Exemplo de multiSelection:
+
+string valor =String.Empety();
+foreach(int i in lb.GetSelectedIndices()){
+	str+=lb.items[ind].Value+"";
+}
+	
+	Architecture:
+AppDomain:
+	Logical partitions 
+	One or more threads ,so inside a process have an app domain and inside appDomains there is threads 
+	One process can have many appDomains
+
+Brownser sends a url request ->Server IIS ,loads Extension(.aspx)->ASpNET_ISAPI.DLL(ISAPI.DLL)
+Lauching ASP.NET WORKER PROCESS(nomes podem ser : aspnet_wp.exe/w3wp.exe/WebDev.WebServer.EXE)
+For every Web Application -App Domain Created
+For every Request for WebForm-New Thread is created 
+
+AppDomain is created only once is created for the first time using that webapplication
+For every request ,new thread is created .
+Cada webform está contido em um app domain 
+/*
+
+A partir da versão 2.0 a plataforma .NET introduziu o recurso chamado  partial class que permite ter uma única classe ser implementada em múltiplos arquivos físicos com extensão .cs.
+
+Isso é feito usando o modificador partial que pode ser aplicado em uma classe, método, interface e struct.
+
+Usando o conceito de partial class você pode dividir a definição de sua classe em mais de um arquivo físico.
+
+Logicamente não há diferença alguma para o compilador pois quando uma partial class é compilada o compilador agrupa todos os arquivos da classe parcial gerando uma única entidade.(O código da linguagem intermediária formado é o mesmo).
+
+Assim vamos criar a classe parcial MinhaClasseParcial em dois arquivos físicos diferentes:
+
+MinhaClassePropriedades.cs
+
+public partial class MinhaClasseParcial
+{
+     public DateTime DataNascimento {  get;  set; }
+     public string Nome { get; set; }
+}
+MinhaClasseMetodos.cs
+
+public partial class  MinhaClasseParcial
+{
+     public TimeSpan CalculaIdade(DateTime DataNascimento)  
+     {
+        return (DateTime.Now.Date - DataNascimento);
+     }
+}*/
+
+
+	
+Quando cria um botao ,ele já está declarado pois faz parte de uma classe parcial ,logo ao compilar o arquivo no servidor
+o servidor vai criar a parte da classe que declara cada elemento presente na UI do programa ,por isso podemos chamar cada objeto
+da ui na classe ,sem precisar declara-lo
+
+A classe principal é a  do arquivo aspx.cs ,se você criar um construtor e tentar passar parametros dos elementos do arquivo aspx
+terá um erro ,pois o arquivo aspx só é convertido com classe parcial ,durante a compilação e isso é feito após a criação do main
+
+
+O processo pelo servidor é fazer todas etapas anteriormentes citadas ,compilar e criar um persisted(DLL) q é enviado ao 
+servidor ,dessa forma app domain é criado apenas uma vez, não sendo necessário ser criado várias vezes .
+
+Life cycle of a page:
+
+Begins with invoking the http handler's ProcessRequest() method,wich builds up the control hierarchy(Instantiation stage)
+then following the instantiation stage the initialization stage begins for the page and all its controls
+initialization (controls raise their init event)
+loadviewstate (only postbacks)
+loadpostbackdata (only postbacks)
+Load(controls raise their Load event)
+RaisePostBackEvent((only postbacks))	
+SaveViewState
+Render
+THe rendered markup is returned to the Web Server 
+**
+After load Eventos of controls(buttonclick and etc )  are reised 
+all the modified properties of the control are added to the viewstate(hidden field)
+Então quando ocorrer a repaginação ,os atributos se mantem como foram solicitados durante o uso 
+EX: se mudar uma letra pra vermelho ,ao enviar a letra se mantem vermelha até ser aberto uma nova sessão do site;
+Page_PreRender are raised after ,so it can override events of control*
+
+Init is not the right place to initiate a control propertie
+
+PageInit event 
+se tiver sido utilizado um postback
+os valores atribuidos serão enviados e a pagina recarregada utilizando os valores 
+após ocorre o page load ,eventos de controle e depois o PreRender
+
+
+/-----Themes
+Is a way to stylize the web by the server tags of the file 
+Theme is a collection of skins and Styleseet 
+Skin file can be used on ASP.NET server controls, 
+where as style sheets are used in standard HTML mark up elements. 
+Skin file is rendered from IIS server. CSS is rendered from the client's browser. 
+(That's why when you apply CSS elements, you get browser specific issues.)
+to make a theme 
+right click on project ->Add ->Add ASP.NET Folder->Theme
+
+righ click on the folder theme you can add more themes with similar path
+
+To add a Style Sheet or a Skin file : rigth click on theme ->Add -> Style Sheet or Skin File
+
+The format of skin file ,is identical with the code generated when you drag and drop actors to the scene on the aspx file
+follow the same format when formating ,but be wise to take of the ID ,it is not necessary,only add tag that has info for 
+the style 
+
+to add the theme to the page ,at the top of aspx file ,add a tag Theme ="NameofThemeFolder"
+All themes from that folder will be read ,so if you have 100 themes ,server will read and apply all of them
+
+Skins overrides styles ,because stylesheet will be apply on the title tag ,and skin on each tag associated
+
+Na propriedade de cada objeto,existe SkinID,quando criado uma tag de skin ,caso vc adicione SkinId = "nome" ,você pode
+associar o nome ao objeto ,dessa forma o objeto herda as alterações feitas pela tag que contem a SkinId .
+
+*GLOBAL THEME* Web.config -> NO arquivo adicione a tag < pages theme = "nomedoTheme"></pages>*********
+if you use skin as global theme ,it cant be overrite by local changes on the tags inside aspx files
+BUT if you make <page styleSheetTheme="nomedotema"></pages> pode ser overrited por local changes ****
+
+Theme can only be changed at Page_PreInit method 
+ ex of code:
+
+protected void btnTheme1(object sender, EventArgs e){
+
+	Session["Theme"]="Theme1";
+
+	Response.Redirect(Request.RawUrl)
+}
+protected void btnTheme2(object sender, EventArgs e){
+	
+	Session["Theme"]="Theme2";
+	Response.Redirect(Request.RawUrl)
+}
+
+protected override void PreInit(EventArgs e){
+	if(Session["Theme"]!= null){
+		Page.Theme=Session["Theme"].ToString();
+}
+}
+
+Redirect User to Another page:
+Ways to build redirecion into Webpages:
+Hiperlink :
+	Unless you use queryString ,one information doesnt pass to another page,can redirect to any page ,not only 
+pages on the project
+	IsPostBack is set to false 
+	PreviousPage is set to null
+
+Reponse.Redirect:
+	Para paginar o brownser envia a solicitação ,com isso o servidor envia uma solicitação 302 ,para o brownser solicitar
+	a paginação ,Nesta solicitação o broownser precisa participar da solicitação 
+	Permite redirecionar a qualquer pagina ,não apenas paginas da aplicação 
+	IsPostBack is set to false 
+	PreviousPage is set to null
+	Utiliza http get request na pagina
+
+
+Server.Transfer:
+	Nestee caso não ocorre a paginação via brownser ,mas unicamente no servidor ,evitando alteração na url 
+	Redireciona apenas para paginas da aplicação 
+	Não ocorre update para o brownser ,usar refresh poder causar resultado inesperado
+	IsPostBack is set to false 
+	PreviousPage references to sourcePage
+	PreviousPage.IsCrossPagePostBack that is referenced in the previusPage is set to false
+
+IButtonControl.CrossPagePostBack
+		Redireciona a qualquer pagina ,não apenas WebApplication
+		Serve para passar informação atual para a proxima pagina	
+		Post request
+		Client transfer ,brownser solicita diretamente a pagina
+		IsPostBack is set to false 
+	 	PreviousPage references the sourcepage
+		PreviousPage.IsCrossPagePostBack that is referenced in the PreviousPage is set to true:Pode transferir informações
+		de uma pagina aoutra ,sem a necessidade de queryString
+PostBack:
+	IsPostBack is set to tue 
+	PreviousPage is set to null 
+
+Exemplo código:
+/*Utilizar quanto a source e a target forem de diferentes web applications*/
+ protected void Redirect_click(object sender,EventArgs e){ /* também funciona com o hiperlink */
+	string value = txtDemo.Tct;
+	Response.Redirect("Target.aspx?demo="+value");
+	}
+ protected void Transfer_click(object sender,EventArgs e){
+	Context.Items["demo"] = txtDemo.Tct;
+	Server.Transfer("Target.aspx");
+	}
+
+
+
+Na pagina Target.aspx
+para receber o valor com metodo Redirect:
+	
+string valor = Request.QueryString["demo"]; /* também funciona com o hiperlink */
+ 
+para receber o valor com método Server.Transfer:
+	string	value = Context.Items["demo"].ToString();
+/* Segunda forma que pode ser utilizado :*/
+	TextBox txtDemo = (TextBox)PreviousPage.FindControl("txtDemo");
+	string = txtDemo.Text;
+
+para receber o valor com o método CrossPagePostBack:
+	string value = Request.Form["txtDemo"];
+	/*Utilizar quanto a source e a target forem de diferentes web applications*/ 
+	/* Segunda forma que pode ser utilizado :*/
+	TextBox txtDemo = (TextBox)PreviousPage.FindControl("txtDemo");
+
+	string = txtDemo.Text;
+////////////-------------------------------------------------------------------------------------------------------///////////
+A terceira forma de obter o resultado é fazendo um cast da Source page,Aula 21 a partir do minuto 8:37
+PreviusPage is a property of page.
+
+No arquivo .cs da pagina source (pagina que vai enviar os objetos)
+crue uma propriedade que retorne o valor necessário : Ex: public string DemoText{get{return txtDemo.Text}}
+
+Na pagina target (seja lá qual o nome),adicione no arquivo aspx :
+<% PreviousPageType VirgualPath="~/NomeSource.aspx"%>
+
+no arquivo .cs:
+string value = PreviousPage.DemoText;
+////------------------------------------------------------------------------------------------------------------/////////////// 
+
+
+Master Pages:
+
+	Allow to create a consistent look and behavior for all the pages (or group of pages) 
+	the extension of MP is ".master"
+	Cannot be direcly accessed from the client because it just act as a template for the other ContentPages
+	Can have content either inside ContentPlaceHolder or outside it .Only content inside the ContentPlaceholder can
+	be costomized in ContentPage
+	Can have multiple masters in one web app 
+	Can have another MP as Master to it
+	The content page content can be placed only inside the content tag
+	Controls of it can be programmed in MP annd content page ,but a content page control will never be programmed 
+	in MP
+	A master page of one web application cannot be used in another web applcation
+	MasterPageFile property of a webform can be set dynamically and it should be done either in or befone the 
+	Page_PreInit event pf the WebForm.Page.MasterPAgeFile="MasterPage.master"
+
+
+
+Project (right click) ->Add MasterPage 
+Apos configurar ,para adicionar webforms que irão herdar o layout 
+clique na masterpage criada e add webform 
+adicione uma tag title no arquivo aspx ,para identificar com facilidade e a tag MasterPageFile ="~/nameofMasterpage.master"
+
+Na masterpage o local onde terá o conteúdo interativo ,adicione a tag <asp:ContentPlaceHolder ContentPlaceHolderID="nomeid" ></asp:ContentPlaceHolder>
+
+
+Na pagina webform que está vinculada a masterpage ,delete o conteúdo de header e body e adicione:
+Caso queira deixar um default value no conteúdo ,basta colocar o ContentPlaceHolderID do master tambem em uma tag no webform
+caso não coloque o conteúdo local Content será inteiramente substituído pelo conteúdo da webform
+<asp:Content runat="server" >
+</asp:Content>
+
+webpages controlls are built after Masterpage ,so if you add a load event on Masterpage ,on webform it needs to be Evento_LoadComplete
+
+Two ways to get the control of masterpage 
+Master.FindControl("idNameofControl") na pagina webform .cs;
+Public property in Masterpage and <%@MasterType="~/namefile.master"%> on webform .aspx
+
+Master.propriedade (puxar o get do metodo publico criado no arquivo .cs da masterpage)
+
+Para evitar quebra de link ao usar hiperlink:
+	Caso o arquivo a ser chamado esteja no mesmo diretorio utilize : 
+<a href="<%Page.ResolveClientUrl("/namefile.aspx")%>nomeparaolink</a>
+	Caso o arquivo a ser chamado esteja no root diretorio utilize :
+<a href="<%Page.ResolveUrl("~/namefile.aspx")%>nomeparaolink</a>
+
+	usando na tag de image runat="server" ,será adicionado o ResolveUrl automaticamente,todo link ou css file que é colocado
+no head do html ,sempre terá a conversão automática do Page.Resolve ,pois o head está sempre 'running" no server.;
+
+If a control is placed in a webform wifhout masterpage:
+	The id name attribute rendered to the browser are the same as id of control on server and thus the same id/name
+can be used for programming a the control in JS
+
+	If a control is placed in a wf with masterpage
+The clientId and name will not be same as Id of control on server because it might end up in ambiguity if the control 
+with same id is present in both master and content page 
+
+Control.ClientIdMode=
+		static: ClientID same as the ID on server .It will not concatinate Id of the parent naming containers
+		AutoID:CLientID generation same as earlier versions of ASP.NET
+		Predictable:Predict the ClientId of child controls in data controls.Setting this property will prevent the 
+		"ctlxx"prefix in the CLientID
+		Inherit:This value will make the control to inherit the parent controls setting.This is the default value for 
+		this property.
+
+
+19minutos aula 24
+Para enviar a informação de um campo de texto para um script js :
+
+	Neste caso temos um texbox com ID de "textDemo".Como não sabemos o client mode ,ou o clientmode possa estar automatico
+logo a solução é puxar o objeto e seu elemento ClientID(que foi gerado);
+<asp:Content runat ="server" ContentPlaceHolderID="head">
+<script>	
+	function hello(){
+	var name = document.getElementById("<%txtDemo.ClientID%>").value
+	alert("hello" + name)
+}
+
+19minutos aula 24
+
+ClientMode= decides how clientID will be rendered 
+UniqueID= name of control rendered to the brownser
+ClientID =name of client id when rendered to the brownser 
+
+UserControl 
+
+add->UserControl 
+Uma forma de adicionar a pagina criada no user control é clicar e arrastar ao webform desejado para reutilização 
+
+Caso queira adicionar de forma manual ,antes do <!Doctype html> adicionar:
+<%Register src="pathtothefileUserControl" tagname="LoginUserControl" tagprefix="uc1"%>
+
+no body para adicionar o UC
+<uc1:LoginUserControl ID="LoginUsercontrol1" runat="server"/>
+
+
+Caso queira passar um método da classe para o LoginUser (geralmente para adicionar string do path a ser encaminhado)
+no arquivo cs 
+	String ReturnUrl{
+	get;set;
+}
+<uc1:LoginUserControl ID="LoginUsercontrol1" runat="server" ReturnUrl="~/Pagina.aspx"/>
+

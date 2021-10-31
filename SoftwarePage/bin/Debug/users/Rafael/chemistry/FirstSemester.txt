@@ -1,0 +1,282 @@
+Science is a systematic method of studying nature based on observation,evidence and verifications of results 
+
+							   facts-true, data	,   reproductivity
+
+chemistry is the study of the composition properties and transformation of matter.
+
+matter =Anything that ocuppy spaces has mass and have volume ->solid ,liquids ,gases
+mass = masure of the ammout present in an object 
+weight is a force due to gravity 
+
+composition = what is made of?
+
+chemical compounds => Molecules ->Elements ,atoms 
+properties => Description
+transformations=>chemical reaction 
+
+método científico:
+	Question ,based on observation
+	what is allready known
+	trends and patterns 
+	hypothesis->Tentative explanation 
+		    Falsifible - it must be showns possibly to be false .
+		    cant be unfisifable ,becausa ,an unfisifable evidence there is no technology to prove it right or errado
+	experiment=>Data collection
+	Draw a conclusion (Analisys of the data)
+
+	then go back to hypotesis ,and change it or discard it 
+	propose a theory 
+	Theory => Scientific based explanation for something that we observe in nature at this time
+	things that can prove a theory wrong or change it :
+	Discovery ,better technology 
+
+Combistion theoory called the phlogiston theory 
+Phlogiston, in early chemical theory, hypothetical principle of fire, of which every combustible substance was in part composed. In this view, 
+the phenomena of burning, now called oxidation, was caused by the liberation of phlogiston, with the dephlogisticated substance left as an ash 
+or residue.
+177y Oxygen was dicovered 
+	Oxygen was discovered about 1772 by a Swedish chemist, Carl Wilhelm Scheele, who obtained it by heating potassium nitrate, mercuric oxide,
+ and many other substances.
+
+Law of nature, in the philosophy of science, a stated regularity in the relations or order of phenomena in the world that holds, under a stipulated 
+set of conditions, either universally or in a stated proportion of instances.
+
+
+matter cannot be created or destroyed ,In a chemical reaction mass is neither created or destroyed
+Matter ->Does it have constant properties and composition  
+Element is a pure substance that cannot be broken down by ordinary chemical means .(add heat or electrical current ,add chemical  if all that is made
+and it doesnt change the element),it change maybe to solid,liquid etc  but not to element
+
+A chemical compound is a pure substance that can be broken down by ordinary chemical means 
+compound is a mix of 2 or more elements 
+Te smallest discrete particle of an element is an atom 
+the smallest discrete particle of a chemical compaund is a molecule 
+
+A mixture is a random bleading of 2 or more pure substances that do not react ,if it reacts it is a chemical reaction 
+homog e    nus            a mixture that is chemically and visually consistent 
+sane kind related
+
+heterogeneus - a mixture that is not chemically and visually the same 
+different
+
+properties of matter are physical or chemical properties 
+physical are based on observation or mesurement with no change in composition of matter 
+
+chemical properties are based on the reactivity of matter with a change in composition .
+Intensive or extensive properties :
+	Intensive is a property thaat does not depend on the ammount of matter present :ex melting and boiling point 
+does not matter the ammout of matter ,the melting or boiling point stills the same 
+	Extensive property is a property that depends of the amout of matter > Ex : mass ,volume ,energy
+	chemical proooperties are always intensive properties .
+
+mesurement is a quantitative observation that includes a number and a unit 
+mesurement  	SI Base Unit	Symbol
+lenght 		meter		m
+mass		Kilogram	kg
+temperature	kelvin		k
+time 		seccond		s
+amout of matter mole		mol
+electric currrent ampare	A
+luminous intensity candela	cd 
+
+
+Volume is a derived Si base units 
+	    equation that defines the parameter 
+velocity wich is distance in meters/ time
+
+
+Mesurement uncertanintu ,accuracy and precision 
+Digital = Numbers
+analog - marker that indicates the magnitude of the mesurement 
+
+Significant figures are the digits of a number that are meaningful in terms of accuracy or precision. They include:
+ Any non-zero digit. Zeros between non-zero digits as in 3003 or 45.60009. Trailing zeros only when there is a decimal point as in 6750.
+ or 274.3300.
+Accuracy is how close mesurement is to the true value 
+Precision is how close multiple mesurementes are to each other 
+
+Significant figures:
+All digits in mesurement will count as significant 
+
+Dimension analysis is a calculation process in wich the variables are set up so that ,the units cancel and we get the correct answer 
+Density: is a physical property of matter that relates mass with volume;
+d = mass/volume 
+every time that you divide 2 extension properties the result is an intensive property 
+
+Atomic Theory:
+John dalton:
+	1-matter is made of tiny particles called atoms 
+	2-all atoms of the same elemend had the same masss and properties 
+	3-atoms of different elements had a different mass and differente properties 
+	4-atoms combine in small whone number ratitos form molecules 
+	5-atoms are indestructible,they are not cahnged in chemical reaction 
+Law of mass conservation
+Laaw of definite proportions -states that elements combined in the same proportion by mass to form chemical compounds .
+law of multiple proportions -whenever 2 elements form 2 or more compounds the different masses that combine with the same mass of 
+a given element are always small whole number ratios.
+
+Evolution of athomic theory :
+Thomas Cathode Ray experiment ,descoberta do eletron ,porém não foi ainda nomeado eletron charge/mass ratio:1.758819x10^8c/g
+Ernest Rutherford ->Most of the matal atom was empety space ,its mass was concentred in the center he called nucleus
+electrons ware very far from te nucleus
+Sir James Chadwick ,discovered the neutrons 
+Atomic structure and symbolism 
+
+electron outside nucleus -1.602*10^-19 (c)  unit charge 1- mass 0.00055 (amu)  0.00091*10^-24 (g)
+proton  nucleus -1.602*10^-19 (c)  unit charge 1+ mass 1.00727 (amu)  6.67262*10^-24 (g)
+neutron nucleus 	0 (c)	 unit charge 0 mass 1.00866(amu)	167493*10^-24 (g)
+
+All atoms are lectrically neutral 
+all atoms have ewal number of protons and eletrons 
+
+what differentiates one element to another 
+the number of protons in the nucleus of the atom ,determines the element 
+the number of protons is called the atomic number Z(wich is the simble to a atomic number)
+Z+ nutrons in the nucleus = A(mass number)
+
+all atoms have some number of neutrons .number of protons + number of neutrons (nucleons)= mass number  
+Atomic notation : 
+	      A	
+		Sy <-generic element symbol 
+              Z      Mass = A ,and protons are Z 
+
+Protium are the hydrogen-1 ,wich it have one proton and no neutrons 
+também existe o tipo de hidrogenio que possui massa atomica de 2 e protons 1 ,deuterium 
+também existe o que possui massa atomica 3 e protons 1 ,tritium ,unstable.
+
+Iso  tope(isotope)
+same place    :atom that have the sanme number of protons ,but differente number of neutrons 
+
+*The mass of the atoms of all the other elements are mesured relative to the mass of  12
+											C
+										     6	
+
+Average atomic weight of the element 
+There are about 20 elements that have only 1 stable atom .
+A stable atom has a net charge of 0. In other words, it has an equal number of protons and electrons. The positive protons cancel 
+out the negative electrons. When the number of electrons does not equal the number of protons, the atom is ionized.
+ (The atom is then called an ion).
+For eleents with more than 1 stable atom ,we need to calculate the elements average atomic weight 
+simple avarege: x1+x2+x3/3 ,or weighted avarage = multiplica a massa pela abundancia em porcentagem ,soma os elementos
+
+A chemical formula is a representation of a pure substance that includes the symbols of the elements in the substance and subscripts to 
+indicate the number of atoms of each element in the pure substance .
+
+A atom is the smallest discrete particle of an element, a molecule is the smallest dicrete particle of a chemical compound ,a molecule 
+consist of 2 or more atoms 
+02	03	h20
+
+A chemical consists of 2 or more different elements :
+ h2o
+There are 7 elements that exists as diatomic molecules at ordinary conditions:
+	H2,n2,F2,o2,,i2,cl2,br2	    5 are gases ,1 liquid ,1 solid
+						  Br2  	    I2
+Hydra tes ->compaunds that have h20 aadsorbed 
+water(hydrus)	
+
+
+Dmitri Ivanovich Mendeleev was a Russian chemist and inventor. He is best remembered for formulating the Periodic Law and creating a
+ farsighted version of the periodic table of elements.
+
+column on periodic table are called groups 
+row is called periods or series 
+Main groups or representative elements are all in groups 1 to 2 and 13 to 18
+Transition alements are in group B and main Group are in groupA
+
+The lanthanide or lanthanoid series of chemical elements comprises the 15 metallic chemical elements with atomic numbers 57–71, 
+from lanthanum through lutetium. These elements, along with the chemically similar elements scandium and yttrium, are often collectively
+ known as the rare earth elements.
+
+Actinides in the environment refer to the sources, environmental behaviour and effects of actinides in Earth's environment. Environmental
+ radioactivity is not limited solely to actinides; non-actinides such as radon and radium are of note. While all actinides are radioactive, 
+there are a lot of actinides or actinide-relating minerals in the Earth's crust such as uranium and thorium. These minerals are helpful in many
+ ways, such as carbon-dating, most detectors, X-rays, and more.
+
+the first column is the alcaline minerals 
+Alkaline rock, any of various rocks in which the chemical content of the alkalies (potassium oxide and sodium oxide) is great enough for 
+alkaline minerals to form. Such minerals may be unusually sodium rich, with a relatively high ratio of alkalies to silica (SiO2), as in the 
+feldspathoids.
+the seccond column alkali earth metals 
+The elements in group one of the periodic table (with the exception of hydrogen - see below) are known as the alkali metals because they form 
+alkaline solutions when they react with water. ... The elements in this group, which are all shiny and silvery-white in appearance, are known 
+as the alkaline earth metals
+
+column 7 halogens ,form salt
+column 8 noble gases  
+left of periodic table are metals ,the right from B ,si A Te Ge and Sb are meloids ,and the right are gases 
+
+Metals -largest category of elements ,most are solids exception is Hg(mercury who is liquid)
+grayish in color 
+shiny 
+they are good conductors of electricity 
+
+Non0Metal ,most are gases ,1 liquid Br ,5 solids ,Brittle and poor conductor of heat and electricity 
+
+Semi-metals -properties btween metal and nonmetal
+semiconductors ,computer chips 
+
+in molecular compouds molecules are formed by bonds btween the atoms in ionic compounds particles of opposite electrical charge are 
+attracted to each other (ions)
+
+Quando o primeiro elemento é metal ,a ligação é ionica 
+ion is a atom or group of atoms with an electical charge.Small whole number .1+ to 4+ or 1- to 3-
+
+the charge of the ion comes from the transfer of eletrons btween the neutron atoms ,they gonna gain or loose eletrons 
+cations are positively charged ions 
+anions are negatively charged ions 
+
+Metals tend to form cations by loosing electrons 
+metals are lectropositive ,non metals tend to form anions by gaining electrons .
+polyatomic ion:
+For main group metals the number of electrons given away is equal to its group number 
+Ex: grupo 1A ,pode liberar um eletron ,no caso dos grupos dos não metais o numero de eletrons ganhos é igual 8- groupNumber.
+
+caso um elemento tenho a capacidade de distribuir mais eletrons que o o outro elemento tem de receber ,o segundo por sua vez terá que ser 
+repetido quantas vezes forem necessárias para haver o equilibrio ionico entre os dois elementos 
+caso as bases de ionização sejam iguais (numero de envio e de recebimento),declarar apenas a nomeclatura sem a base .
+Agora caso seja : k+1 + p3- aí sim declarar a necessidade de k3p (para cada p é necessário 3ks ,para equilibrio ionico)
+
+transition metals are kind of shaddy because cant predict their charge from working from the periodic table
+
+Nomeclature
+Na+ = SodiumIon
+
+Metal ions + post transition metal ions
+name the element,use a romanian numeral to indicate the charge of the ion,then add the word ion.
+fe2+ Iron(II)ion ferrausion
+fe3+Iron(III)ion ferraicion
+
+anions->monatomic anions ,polyatomic anions
+Name the element changing the suffix to -ide
+H hydrate hydride 
+F Fluorine  -fluoride 
+
+Polyatomic anion is either :
+ate 1 more oxygen atom  ite
+or ite one less than ate
+
+exceptin:
+ oh- hydroxide
+ cn- cynide
+
+The core polyatomic anions ,that end in -ate
+Most polyatomic anions contain 1 or more oxygen atom
+generic formula = 
+  n-      n = anions , m=number of oxygen atoms in the ion	
+YO
+ m
+
+oxyanions
+
+miscellaneous anions 
+ddichromate ,means 2 chromates Cv2o1-2^
+
+thiosol		fate
+means suffer
+
+acetate,c2h302
+peroxide 0m^-2
+
+Nming Ionic Compounds :
+
+

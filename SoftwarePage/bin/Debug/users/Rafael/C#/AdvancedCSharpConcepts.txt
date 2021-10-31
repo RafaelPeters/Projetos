@@ -1,0 +1,275 @@
+IN .Net exception is an object of type System.Exception.
+on .net a  exception needs to be a object of System.Exception or a object class inherited of the System.Exception 
+on c++ it can be a int or string or other valluess 
+convert string to int:
+	int.Parse C#
+	Cint  	  Vb
+
+catch (Exception ex){
+	string ev=ex.message;
+}
+
+ can use many catch ,with different types of exception
+
+to trow an Exception:
+	throw new  System.ApplicationException();
+
+if you are not using "using" ,to implicit close file 
+then ,the close method should be called at the finally block 
+
+using can only be used in objects that contains the method IDisposable  
+
+
+Unsafe Code:
+	unsafecode é poder utilizar pointers no seu codigo ,para isso deve-se habilitar no compilador o uso de unsafecode
+	sintaxe é igual a do c++ ,porém adicionado a keyword unsafe ,exemplo:
+
+static unsafe void Square (int*ptr){
+	*ptr = *ptr**ptr;
+}
+se na classe for adicionado a keyword unsafe antes de class ,todo código poderá utilizar ponteiros ,caso não seja especificado
+na classe ,para rodar um método unsafe no mainMethod,deve-se:
+static void Main(string[] args){
+	int x=10
+unsafe{
+	Square(&x) //this will pass the address of the x
+}
+
+}
+
+exemplo de recebmento de arraypointer e resultado :
+
+
+	static unsafe PrintArray(int* par,int len){
+	for(int i =0;i<len;i++){
+	Console.WriteLine(*(par+i));}
+
+}
+exemplo de execução do metodo PrintArray:
+
+int[] ar = {1,2,3,4,5};
+unsafe{
+	fixed(int*par = ar){ //int par ,recebe o endereço de alocação de memória de ar.
+	PrintArray(par,ar.length);
+}
+ 
+}
+Garbage collector são threads ,quando completado a task são liberadas .Microsoft desenvolveu 3 camas de garbage collector 
+g0,g1,g2.Digamos que 5 objetos são creados no heap ,destes 5 ,2 são liberados e 3 continuam a ser utilizados .GB vai se livrar dos 2
+que foram liberados e" subir " os que estão sendo utilizados para o g1 e adicionar novas threads no g0 ,caso entre novos objetos
+criados em heapmemory .Toda vez que um dos gs fica full ,as threads são passadas para proxima camada ,liberando a primeira 
+
+Fixed keyword garante que a memória continuará na g0 .Não será realocada para g1 (assim perdendo a referencia do pointer)
+o problema do unsafe é que quando a memoria é derreferenciada ,por exemplo array com length 5 e você busca array[5],ao invés
+de uma exception ,você será entregue uma garbage memory ,com conjunto aleatório de valores.
+
+quando criado uma struct ,como acessar os membros pointer:
+	struct Demo{
+	public int M,N;		
+}
+
+Class Program{
+	public static unsafe  void Print(Demo* pdemo){
+	Console.WriteLine((*pdemo).M + pdemo->N);
+}
+}
+
+C# só aceita pointers com valores que não são declarados em heap ,a não ser arrays .
+Logo ,c# não aceita class pointers
+
+Reflection:
+
+
+
+Delegates,Events:
+	Introduction Delegates:
+	É utilizado quando você quer utilizar um método de uma classe que você desconhece,porém ,deve ter a assinatura igual
+a do método utilizaodo ,por exemplo ,se o método tem duas entradas ,por sua vez a delegate deve ter os mesmos 2 resultados como 
+parametros de entrada, do mesmo tipo,caso a delegate retorne um tipo de valor o método a ser colocado ,também deve respeitar
+os parametros;
+Declaração de uma delegate deve ser feita no scope fora da classe ,delegate é um type itself ,assim como struct ou class;
+
+Para declarar uma delegate ,ex:
+public delegate int MathOperation(int i ,int j);
+
+public class algumacoisa{
+//instanciando a delegate 
+public MathOperation Operation;
+
+//uma forma de inicializar a delegation é no método construtor ,ex:
+	algumacoisa(MathOperation x){
+	Operation = x;
+}
+
+public void calc(int a ,int b){
+
+int res = 0;
+res = Operation(a,b);
+console.writeline("Result"+res);
+}
+
+
+}	  
+ para utilizar no main method ,será necessário uma classe coom um método que corresponda o formato da delegate.
+
+public class algumaCoisa2{
+	public int operação(int i ,int j){
+		return i+j;
+}
+}
+
+Na classe principal do projeto :
+ public static void Main(){
+	algumacoisa2 al = new algumaCoisa2();
+	MathOperation delegate  = new MathOperation(al.operacao);
+	alcumacoisa alguma = new algumacoisa(delegate);
+	alguma.calc(2,5) //resultado será 7
+	
+}
+
+Delegate é uma forma de você apontar para diferentes métodos com a mesma assinatura .
+
+Singletone ,forma de instanciar uma classe apenas uma vez;
+exemplo:
+	class ChatCoordinate{
+	private ChatCoordinate(){} //this ,makes impossible to make an object of the class
+	private static ChatCoordinate obj;
+	public static ChatCoordinate GetObject(){
+		if(obj == null){
+		obj=new ChatCoordinator()
+		return obj;
+	}}
+}
+Delegates é uma boa forma de padronizar o codigo ,sem você saber como será exposto o resultado ,para a mesma delegate ,podem 
+haver vários métodos que respeitem a forma de construção da delegate (respeita valores de retorno e de entrada);
+
+Events are collection of delegates .So ,if in code you made a list<delegate> del = new list<delegates>()
+a more ellegant way to do it ,is by using event keyword;
+
+Para fazer um loop na coleção event ,ex no minuto 25,aula 83:
+if(nomedoEvento !=null){
+
+	ReceiveMessage(message);
+}
+
+Exemplo de código com delegate :
+namespace AplicativoChat
+{
+    delegate void MessageHandler(string message);
+    class Chat
+    {  List<MessageHandler> Handller = new List<MessageHandler>();
+        private static Chat obj;
+ 	private Chat() {
+                    }
+
+        public static Chat GetObject()
+        {
+            if (obj == null) obj = new Chat();
+            return obj;
+                        
+        }
+
+        public void Register(MessageHandler ox) {
+            //Vai registrar uma lista de métodos ;
+            Handller.Add(ox);
+        }
+        public void BroadCast(string message) {
+            //para cada método registrado ,será passado uma string message;
+            foreach (MessageHandler mh in Handller) {
+                mh(message);
+            }
+        }
+    }
+}
+
+public partial class Cliente : Form
+    {
+        public Cliente()
+        {
+            InitializeComponent();
+        }
+        Chat cc = Chat.GetObject();
+        private void Cliente_Load(object sender, EventArgs e)//load occours after first time open;
+        {
+            cc.Register(new MessageHandler(ReceivedMessage));
+        }
+        void ReceivedMessage(string message) {
+            MensagensRecebidas.Text += message + Environment.NewLine;
+        }
+
+        private void BroadCast_Click(object sender, EventArgs e)
+        {
+            cc.BroadCast(MSGM_Enviar.Text);
+        }
+    }
+******************************************************************************************************************************
+
+Utilizando event (forma mais elegante de resolver o algorítmo)
+
+
+class MessageEventArgs:EventArgs {
+	public string Message{
+	get;set;	
+}
+}
+
+{
+    delegate void MessageHandler(object sender ,MessageEventArgs e);
+    class Chat
+    { 
+ 	public event MessageHandler ReceivedMessage; //Não é mais necessário um método de registro pra adicionar a uma lista,
+	//pois o event ,já é uma colection que já recebe o valor quando adicionado o +=
+	
+        private static Chat obj;
+ 	private Chat() {
+                    }
+
+        public static Chat GetObject()
+        {
+            if (obj == null) obj = new Chat();
+            return obj;
+                        
+        }
+
+        //Método broadCast tbm não é mais necessário o loop,pois não precisa utilizar um loop em lista
+	public void BroadCast(string message){
+
+	if(ReceivedMessage!=null)
+	MessageEventArgs e = new MessageEventArgs();
+	e.Message=message;
+	ReceivedMessage(this,message);   //já será adicionado o message a todos elementos que contem o método      
+}
+    }
+}
+//form
+public partial class Cliente : Form
+    {
+        public Cliente()
+        {
+            InitializeComponent();
+        }
+        Chat cc = Chat.GetObject();
+        private void Cliente_Load(object sender, EventArgs e)//load occours after first time open;
+        {
+            cc.ReceivedMessage +=new MessageHandler(ReceivedMessage);
+        }
+        void ReceivedMessage(object sender, MessageEventArgs e) {
+            MensagensRecebidas.Text += e.Message + Environment.NewLine;
+        }
+
+        private void BroadCast_Click(object sender, EventArgs e)
+        {
+            cc.BroadCast(MSGM_Enviar.Text);
+        }
+    }
+
+Parametro de industria é sempre um event conter object sender e um eventargs e
+
+*****************************************************************************************************************************
+UserControl:
+	Crie um novo projeto ,depois add _>UserControl
+
+para o controle ocupar todo espaço do control na propriedade DOCK :Fill
+e centralize o objeto 
+ao criar um userControl ,você precisa dar build no projeto .Após ser feito isso ,em MyControlLybraryComponent 
+poderá ser utilizado o control.;

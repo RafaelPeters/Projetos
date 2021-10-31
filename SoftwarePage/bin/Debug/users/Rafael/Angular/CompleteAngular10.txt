@@ -1,0 +1,50 @@
+Goals and Advantages of Angular:
+
+Separation of DOM manipulation Logic from Application logic
+
+Separation of HTML logic From application Logic
+
+Separation of business Logic from application Logic:
+	Business logic: is code to featch data from data source and make objects for validations
+Make code mainteinable
+
+Make Single-ppage application development easier
+
+Make the code Unit Testable
+
+******************************************************************************************************************************
+Code Compilation Process
+Application Source Code ->TypeScriptCompiler->Javascript Code->executed by brownser
+[Type Script]		   [tsc]
+******************************************************************************************************************************
+
+
+Building Blocks of Angular : Components = App Data + Event Handlers
+			     Templates = Design Logic
+			     Data Binding = Mediates Between Component and Template 
+			     Module = collection of components
+			     Service = Typescript object that contains Business Logic+Rest API call
+			     Dependency injection = Services = Business Logic + REST API calls
+			     Directives= Direct DoM Manipulation 
+******************************************************************************************************************************
+Para instalar angular > Instale o node ,para ter o npm ->npm install @angular/cli -g (g make it globaly)
+	to create angular app -> ng new appName --style=scss --routing 
+Caso alguns pacotes não tenham sido instalados ,pode-se utilizar o npm para instalar os pacotes que estão faltando 
+usando a folder onde foi instalado ,navegue ao diretorio diretorioAngularProjeto\taskmanager->npm install 
+para rodar a aplicacao no taskManager do angular ->ng serve  --open --port = "anyPortNumberthat you decide ,that ar not being used"
+no visual code
+File ->Open Folder;
+Flow Execution _>index.html->Main.ts->app.module.ts->app.component.ts+app.component.html
+
+no index.html ,existe uma tag <app-root></app-root> ali será adicionado o template 
+in execution time all files .ts ,are compiled to a js
+
+app.component.html onde é colocado a pagina html ,que será adicionada na tag app-root 
+******************************************************************************************************************************
+Adding Bootstrap:
+	npm install jquery --save npm install jquery@2.2 -- save (bootstrap precisa do jquery )
+	npm install popper.js --save (dependencia que roda o bootstrap)
+	npm install bootstrap --save
+Para adicionar os pacotes no aplicativo Angular :
+	angular.json ,lá é adicionado no styles o bootstrap e os aquivos jquery,popper.js e bootsttrap no scripts 
+

@@ -1,0 +1,22 @@
+Binary numeric system:
+ 	Addition and Subtraction:
+	
+		Numeric representations are ways to keep in memory or comunicate the quantity of something 
+
+		Quantity and representation are not the same thing
+		quantidade é a quantidade de um objeto no mundo a ser contabilizado 
+		representação é a grandeza que vai representar a quantidade ,seja Niwtons ,radianos ,metros ,sistemas
+		como sistema decimal ou binário ou hexadecimal 
+		
+
+
+
+
+
+Processor is the heart of a modern computer 
+	is a electrical component that has the following funcgions
+	Read instructions
+	Execute Instructions 
+	Arithmetic calculations 
+	Read/write memory 
+	input/output

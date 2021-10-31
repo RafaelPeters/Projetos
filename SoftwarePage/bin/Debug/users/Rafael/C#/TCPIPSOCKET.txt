@@ -1,0 +1,82 @@
+Host:
+	Any machine connected to a computer network 
+	it is called host ,because it hosts a software that connects to network
+	every machine has a unque ip address inside a computer network
+	in many cases a host name is used insted of ipadress by a dns
+
+
+ Ip Address:
+	IpV4 adress format 
+	172.16.254.1
+   10101100.00010000.11111110.00000001	
+	one byte = eight bits 
+  in total 32bits or 4 bytes 
+
+The port :
+	
+	combination of port and ip address = EndPoint 
+computer have 65536 ports avaible 
+Ports 0 to 1023 system ports ,reserved to the OS usage
+
+Client/Server Model as used in tcp/ip Stream sockets:
+	Primeiro é necessário o seervidor iniciar e ter um EndPoint ,depois disso o cliente faz uma solicitação de acesso ao 
+servidor ,para isso o clliente precisa do ip e da port do servidor .
+
+Telnet client :
+	
+ 	control panel ,program and features ->TelnetClient 
+	para rodar o telnet ,abra o cmd e digite telnet 
+
+Telnet é um protocolo de rede, aonde é possível realizar teste de comunicação de portas, assim avaliando bloqueios na sua 
+estrutura de rede, você pode realizar o teste na seguintes portas: 21 – FTP. 22 – SSH.
+
+ServerSide TCP/IP
+
+Para ser possivel utilizar a programação em sockets ,necessário adicionar asa bibliotecas
+System.Net e System.Net.Sockets 
+A stream socket provides two way communications between a client and server.
+
+- This communication is reliable and sequenced. Stream sockets are above TCP to run across any networks.
+
+- They provide unduplicated flow of data and have well established mechanism for creating and destroying connections and for detecting errors.
+
+- If the delivery of data packets is impossible the sender will receive an error indicator.
+
+- There are no data boundaries for data records.
+
+
+Primeiro ,no main crie um objeto Socket:    Address for IP version 4  supports reliable, two-way, connection-based byte streams  e Protocolo TCP
+	Socket listenerSocket = new Socket(AddressFamily.InterNetwork,SocketType.Stream,ProtocolType.Tcp);
+	IpAdress ipaddr= IPAdress.Any; //loopback Ip adress 127.0.0.1 also known as localhost 
+
+//Provides an IP address that indicates that the server must listen for client activity on all network interfaces.This field is read-only.
+	IpEndPoint ipep = new IPEndPoint(ipaddr,23000); //ip and the port 
+	listenerSocket.Bind(ipep); //Bind é onde se coloca a endPoint no socket
+	listenerSocket.Listen(5);//The maximum length of the pending connections queue.
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+	//Cliente nada mais é que o accept do socket que foi criado para comunicação.(pois quem acessa deve fornecer o socket da maquina ao host)
+	Socket client =listenerSocket.Accept(); //blocking Operation Synchronous Operation 
+	//The send, receive, and reply operations may be synchronous or asynchronous. A synchronous operation blocks a process till the 
+       //operation completes
+	byte[] buff =new byte[128];
+	int numberofreceivedbytes = 0;
+	numberofreceivedbytes = client.Receive(buff); //o buff deve ser um array de tipo byte;
+	string texto =Encoding.ASCII.GetString(buff,0,128); //Converts the bytes received on the network to ASCII string 
+***********************************************************************************************************************************************************************
+sending data back to client:
+ para enviar arquivo ao cliente, precisa-se da referencia do socket do cliente ,no algoritmo anterior ,já temos o objeto cliente ,que por sua vez tem a informação 
+do socket do cliente.
+while(true){
+ Client.Send(buff);
+if(receivedText = "x") break; 
+Array.Clear(Buff,0,buff.Length);
+numberOfReceivedBytes=0;
+}
+***********************************************************************************************************************************************************************
+Para gerar permissão no firewall para aplicação :
+	ControlPanel->WindowsFirewall->Advanced_>InboundRules->NewRule-> next ->Selecione o path onde está aplicação ->next
+				 		OutboundRules 
+***********************************************************************************************************************************************************************
+Sockets on the client side:
+	
+	
