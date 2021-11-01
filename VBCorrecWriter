@@ -1,0 +1,40 @@
+Module Program
+    Const address As String = "C:\Users\Braga\Documents\test22\22test.txt"
+    Dim stream As System.IO.StreamReader = Nothing
+    Dim listaClass1 As List(Of Class1) = New List(Of Class1)
+    Sub Main(args As String())
+        Reader()
+        For Each a As Class1 In listaClass1
+            Console.WriteLine(a.ToString)
+        Next
+        Console.ReadLine()
+    End Sub
+
+    Sub Query()
+        Dim query = From objeto In listaClass1 Select objeto Order By objeto.val1
+
+    End Sub
+
+    Sub Reader()
+
+        Using stream = New IO.StreamReader(address)
+            While Not stream.EndOfStream
+                Dim objeto As New Class1
+                Dim fields() As String = stream.ReadLine().Split(","c)
+                objeto.val1 = fields(0).ToString()
+                objeto.val2 = fields(1).ToString()
+                objeto.val3 = fields(2).ToString()
+                listaClass1.Add(objeto)
+
+            End While
+
+
+        End Using
+
+
+
+    End Sub
+
+
+
+End Module
