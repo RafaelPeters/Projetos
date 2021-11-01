@@ -1,0 +1,81 @@
+namespace Downloader
+
+{
+
+    class Translation {
+
+               
+        public static string PT(string a) {
+            //Aqui é utilizado a api de translation
+            return a;
+        }
+    }
+
+    class Parametros {
+        public string address { get; }
+        public string language { get; }
+        public string linguageNativaVideo { get; }
+
+
+        public Parametros(string address,string language,string linguageNativaVideo) {
+            this.address = formater(address);
+            this.language = language;
+            this.linguageNativaVideo = linguageNativaVideo;
+        }
+        private string formater(string ad) {
+            string endereco = "";
+            bool copy=false;
+            for (int i = 0; i < ad.Length; i++)
+            {
+                
+                copy = (ad[i].ToString() == "=") ? true : false;
+                                               
+                endereco += (copy) ? endereco + ad[i] : " ";
+            }
+                                         
+            return endereco;
+        }
+
+    }
+
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            
+
+            Parametros inicializador = new Parametros(args[0],args[1],args[2]);
+            string nomeArquivo = args[2];
+
+            var youtube = new YoutubeClient();
+
+            var cc = VideoFectch(youtube,inicializador,nomeArquivo);
+            Console.WriteLine(cc.Status);
+            Console.WriteLine("done");
+            Console.ReadLine();
+            
+        }
+        static async Task VideoFectch(YoutubeClient u,Parametros p,string nome )
+        {
+
+            var trackManifest = await u.Videos.ClosedCaptions.GetManifestAsync(p.address);
+            var trackInfo = trackManifest.GetByLanguage(p.linguageNativaVideo);
+            await u.Videos.ClosedCaptions.DownloadAsync(trackInfo, nome +".srt");
+           
+
+
+        }
+       
+
+        static async Task downloader(YoutubeClient youtube) {
+            var streamManifest = await youtube.Videos.Streams.GetManifestAsync("hJES9UFXBTM");
+
+            var streamInfo = streamManifest.GetMuxedStreams().GetWithHighestVideoQuality();
+
+            var stream = await youtube.Videos.Streams.GetAsync(streamInfo);
+
+            await youtube.Videos.Streams.DownloadAsync(streamInfo, $"video.{streamInfo.Container}");
+
+        }
+    }
+}
